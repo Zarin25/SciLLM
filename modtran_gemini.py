@@ -85,23 +85,13 @@ def load_environment():
     load_dotenv()
     genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
-
-def convert_pdf_to_xml(pdf_file, xml_path):
-    os.makedirs("temp", exist_ok=True)
-    pdf_path = os.path.join("temp", pdf_file.name)
-    with open(pdf_path, 'wb') as f:
-        f.write(pdf_file.getbuffer())
-    subprocess.run(["pdftohtml", "-xml", pdf_path, xml_path], check=True)
-    return xml_path
-
-def extract_text_from_xml(xml_path, document_name):
-    tree = etree.parse(xml_path)
+def extract_text_from_pdf(pdf_file, document_name):
     text_chunks = []
-    for page in tree.xpath("//page"):
-        page_num = int(page.get("number", 0))
-        texts = [text.text for text in page.xpath('.//text') if text.text]
-        combined_text = '\n'.join(texts)
-        text_chunks.append({"text": combined_text, "page": page_num, "document": document_name})
+    with pdfplumber.open(pdf_file) as pdf:
+        for i, page in enumerate(pdf.pages):
+            text = page.extract_text()
+            if text:
+                text_chunks.append({"text": text, "page": i + 1, "document": document_name})
     return text_chunks
 
 def get_uploaded_text(uploaded_files):
@@ -109,8 +99,7 @@ def get_uploaded_text(uploaded_files):
     for uploaded_file in uploaded_files:
         document_name = uploaded_file.name
         if document_name.endswith(".pdf"):
-            xml_path = os.path.join("temp", document_name.replace(".pdf", ".xml"))
-            text_chunks = extract_text_from_xml(convert_pdf_to_xml(uploaded_file, xml_path), document_name)
+            text_chunks = extract_text_from_pdf(uploaded_file, document_name)
             raw_text.extend(text_chunks)
         elif uploaded_file.name.endswith((".html", ".htm")):
             soup = BeautifulSoup(uploaded_file.getvalue(), 'lxml')
