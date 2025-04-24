@@ -1,0 +1,31 @@
+question,answer 
+What atmospheric models are included with MODTRAN?,"Tropical, mid-latitude summer, mid-latitude winter, sub-arctic summer, sub-arctic winter, U.S. standard"
+Can you tell me the page number where I can find this-What atmospheric models are included with MODTRAN?,Page 19
+How do I set the atmospheric water vapor content to the standard atmosphere?,Set H2OSTR to 1.0
+Can you tell me the page number where I can find this-How do I set the atmospheric water vapor content to the standard atmosphere?,Page 52
+How do I set the surface temperature to 279 K?,Set TPTEMP to 279
+Can you tell me the page number where I can find this-How do I set the surface temperature to 279 K?,Page 156
+"If I want to specify the amount of oxygen in the atmosphere, what field is relevant?",PROF_O2
+"Can you tell me the page number where I can find this-If I want to specify the amount of oxygen in the atmosphere, what field is relevant?",Page 56
+How do I set the the aerosol visibility to urban?,Set field [MODTRANINPUT][AEROSOLS][IHAZE] to AER_URBAN
+Can you tell me the page number where I can find this-How do I set the the aerosol visibility to urban?,Page 60
+"In the configuration file, how do I set surface reflectivity to 60%.",Set field [MODTRANINPUT][SURFACE][SURREF] to 0.6
+"Can you tell me the page number where I can find this-In the configuration file, how do I set surface reflectivity to 60%.","Page 37, 81"
+How do you call the MODTRAN GUI from the command line?,mod6gui
+Can you tell me the page number where I can find this-How do you call the MODTRAN GUI from the command line?,Page 15
+"If you want to run MODTRAN from the command line using an input json file, what is the command?",mod6c_cons
+"Can you tell me the page number where I can find this-If you want to run MODTRAN from the command line using an input json file, what is the command?","Page 13, 14"
+What file includes the full radiance data?,tp7
+Can you tell me the page number where I can find this-What file includes the full radiance data?,Page 88
+What file includes the radiance data convolved with a user-supplied SRF?,chn
+Can you tell me the page number where I can find this- What file includes the radiance data convolved with a user-supplied SRF?,Page 11
+What range of solar zenith angle are allowed?,0 to 180 
+Can you tell me the page number where I can find this-What range of solar zenith angle are allowed?,Page 78
+"How to set a surface ground temperature, distinct from the surface air temperature, for lines-of-sight not terminating at the ground?",Set SURFACE keyword SURREF to either ?LAMBER? or ?BRDF?; set SURFACE keyword NSURF to 2 and set SURFACE keyword AATEMP to the desired surface ground temperature in degrees Kelvin.
+"Can you tell me the page number where I can find this-How to set a surface ground temperature, distinct from the surface air temperature, for lines-of-sight not terminating at the ground?",Page 156
+"If I want to specify the amount of nitrous oxide in the atmosphere, what field is relevant?",PROF_N2O
+"Can you tell me the page number where I can find this-If I want to specify the amount of oxygen in the atmosphere, what field is relevant?",Page 56
+What is the meaning of CHKRES Warning? ,DV is being increased from 3.000000 to 15.000000 CM-1. The output step size cannot be smaller than the band model resolution
+Can you tell me the page number where I can find this- What is the meaning of CHKRES Warning? ,Page 96
+What is the keyword used for JSONObject for spectral bandpass and related inputs?,SPECTRAL
+Can you tell me the page number where I can find this - What is the keyword used for JSONObject for spectral bandpass and related inputs?,Page 45

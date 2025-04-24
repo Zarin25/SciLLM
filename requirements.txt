@@ -1,0 +1,17 @@
+streamlit
+pandas
+scikit-learn
+pdfplumber
+PyPDF2
+beautifulsoup4
+lxml
+python-dotenv
+keybert
+sentence-transformers
+langchain
+langchain-community
+langchain-openai
+google-generativeai
+transformers
+torch
+bert-score
